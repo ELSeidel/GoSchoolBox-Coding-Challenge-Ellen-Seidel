@@ -49,13 +49,13 @@ function Calculator() {
         setLastClickWasEquals(true);
     }
 
-    const outputField = <div><button className='output' disabled='true'>{output}</button></div>;    
+    const outputField = <div><button className='output' disabled={true}>{output}</button></div>;    
 
     const RowOneValues = ['7', '8', '9', '/'];
     const RowOneButtons = 
         RowOneValues.map(
             (val) => {
-                return <InputButton name={val} onClickButton={() => clickInputButton(val)}></InputButton> 
+                return <InputButton key={val} name={val} onClickButton={() => clickInputButton(val)}></InputButton> 
             }
         );
 
@@ -63,7 +63,7 @@ function Calculator() {
     const RowTwoButtons = 
         RowTwoValues.map(
             (val) => {
-                return <InputButton name={val} onClickButton={() => clickInputButton(val)}></InputButton> 
+                return <InputButton key={val} name={val} onClickButton={() => clickInputButton(val)}></InputButton> 
             }
         );
 
@@ -71,24 +71,24 @@ function Calculator() {
     const RowThreeButtons = 
         RowThreeValues.map(
             (val) => {
-                return <InputButton name={val} onClickButton={() => clickInputButton(val)}></InputButton> 
+                return <InputButton key={val} name={val} onClickButton={() => clickInputButton(val)}></InputButton> 
             }
         );
 
     const RowFourButtons = 
         <div>
-            <InputButton name={'0'} onClickButton={() => clickInputButton('0')}></InputButton>
-            <InputButton name={'.'} onClickButton={() => clickInputButton('.')}></InputButton>
+            <InputButton key={'0'} name={'0'} onClickButton={() => clickInputButton('0')}></InputButton>
+            <InputButton key={'.'} name={'.'} onClickButton={() => clickInputButton('.')}></InputButton>
             <OutputButton onClickButton={() => clickEquals()}></OutputButton>
-            <InputButton name={'+'} onClickButton={() => clickInputButton('+')}></InputButton>
+            <InputButton key={'+'} name={'+'} onClickButton={() => clickInputButton('+')}></InputButton>
         </div>;
 
     const RowFiveButtons = 
         <div>
-            <InputButton name={'DEL'} onClickButton={() => clickDeleteButton()}></InputButton>
-            <InputButton name={'CLEAR'} onClickButton={() => clickClearButton()}></InputButton>
-            <InputButton name={'??'}></InputButton>
-            <InputButton name={'^'} onClickButton={() => clickInputButton('^')}></InputButton>
+            <InputButton key={'N/A'} name={'N/A'}></InputButton>
+            <InputButton key={'DEL'} name={'DEL'} onClickButton={() => clickDeleteButton()}></InputButton>
+            <InputButton key={'CLEAR'} name={'CLEAR'} onClickButton={() => clickClearButton()}></InputButton>
+            <InputButton key={'^'} name={'^'} onClickButton={() => clickInputButton('^')}></InputButton>
         </div>;
 
     return (

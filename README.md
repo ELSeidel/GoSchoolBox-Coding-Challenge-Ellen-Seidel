@@ -5,6 +5,8 @@
 - Displays error when the user tries to calculate the result for a mathematically invalid input
 - Clear and delete buttons to improve user experience
 - Handles decimal arithmetic. Although it will run into the typical floating point troubles (since decimals cannot be exactly expressed using binary)
+- When the user clicks equals, a number (the "result") is displayed. If their next click is an operation, the operation is performed on the "result". Otherwise,
+  the screen clears and the next click is displayed by iteself
 
 
 ### Testing
@@ -15,4 +17,4 @@
 
 ### Known Bugs
 
-- Decimal arithmetic starts to approximate due to typical problems storing decimal numbers in binary
+- Decimal +exponential arithmetic starts to approximate due to typical problems storing these numbers in binary
