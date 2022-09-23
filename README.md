@@ -12,7 +12,7 @@
 ### Testing
 
 - Automated unit tests are in calculator.tests.js
-- Video of calculator in action:
+- Video of calculator in action: See file named "calculator_testing_video.mov"
 
 
 ### Known Bugs
