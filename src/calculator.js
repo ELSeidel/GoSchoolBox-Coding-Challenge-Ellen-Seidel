@@ -2,28 +2,40 @@ import React, { useState } from 'react';
 import InputButton from './inputButton';
 import OutputButton from './outputButton';
 import './index.css';
-import {ERROR_EXPRESSION, evaluateExpression} from './calculatorUtils'
+import {ERROR_EXPRESSION, evaluateExpression, OPERATION_CHARACTERS} from './calculatorUtils'
  
 function Calculator() {
     const [output, setOutput] = useState('');
+    const [lastClickWasEquals, setLastClickWasEquals] = useState(false);
 
     function clickInputButton(val) {
-        if (output === ERROR_EXPRESSION) {
+        if (
+            output === ERROR_EXPRESSION || 
+            (lastClickWasEquals && !OPERATION_CHARACTERS.includes(val))
+        ) {
             setOutput(val);
         }
-        else {setOutput(output + val);}
+        else {
+            setOutput(output + val);
+        }
+        setLastClickWasEquals(false);
     }
 
     function clickDeleteButton(val) {
         if (output === ERROR_EXPRESSION) {
             setOutput('');
         } 
-        else {setOutput(output.slice(0,-1));}
+        else {
+            setOutput(output.slice(0,-1));
+        }
+        setLastClickWasEquals(false);
     }
 
     function clickClearButton(val) {
         setOutput('');
+        setLastClickWasEquals(false);
     }
+
 
     function clickEquals() {
         if (output === ERROR_EXPRESSION) {
@@ -34,6 +46,7 @@ function Calculator() {
             const result = evaluateExpression(output);
             setOutput(result.toString());
         }
+        setLastClickWasEquals(true);
     }
 
     const outputField = <div><button className='output' disabled='true'>{output}</button></div>;    

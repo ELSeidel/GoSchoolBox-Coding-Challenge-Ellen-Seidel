@@ -1,5 +1,13 @@
 import { evaluateExpression } from './calculatorUtils';
 
+test('empty string', () => {
+    expect(evaluateExpression('')).toBe('Invalid Expression!')
+});
+
+test('solo number', () => {
+    expect(evaluateExpression('65')).toBe(65)
+});
+
 test('add 2 positive numbers', () => {
     expect(evaluateExpression('3+2')).toBe(5)
 });
@@ -50,4 +58,12 @@ test('fractional exponents', () => {
 
 test('negative exponents', () => {
     expect(evaluateExpression('10^-2')).toBe(0.01)
+});
+
+test('large exponent', () => {
+    expect(evaluateExpression('9*10000000000000000000000000')).toBe(9e+25)
+});
+
+test('large exponent with additional operation', () => {
+    expect(evaluateExpression('9e+25/10000000000000000000000000')).toBe(9)
 });
